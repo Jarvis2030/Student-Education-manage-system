@@ -1,0 +1,33 @@
+FD(12): idnr. name. login. branchname. program. coursename. coursecode.
+credit. departmentname. capacity. classification. grade. position.
+
+idnr -> name. program. branchname. login
+coursecode -> coursename. credit. capacity. department
+idnr.coursecode -> grade, position
+coursecode, position -> idnr
+login -> idnr
+
+R1(idnr, name. program. branchname. login) - BCNF
+R2(idnr, coursename. coursecode.
+credit. departmentname. capacity. classification. grade. position)
+
+R21(coursecode, coursename. credit. capacity. department) - BCNF
+R22(coursecode, idnr, classification. grade. position)
+
+R221(idnr, coursecode, grade, position) -BCNF
+R222(idnr, coursecode, classification) - BCNF
+ 
+Adding MVD:
+program ->> department
+branchname ->> program
+coursecode ->> classification
+
+R1(program, branchname) - 4NF
+R2(idnr, name, program, login) - 4NF
+
+R1(coursecode, coursename. credit. capacity. department) - 4NF
+
+R1(idnr, coursecode, grade, position) - 4NF
+
+R1(coursecode, classification) - 4NF
+R2(idnr, coursecode) - 4NF

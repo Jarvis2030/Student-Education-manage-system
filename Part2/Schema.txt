@@ -1,0 +1,49 @@
+Student(idnr,name,login,program)
+
+Studies(student,branch)
+	student -> Student.idnr
+	branch -> Branch.name
+
+Branch(Name,program)
+
+Program(Name, abbreviation)
+
+Department(Name, abbreviation)
+
+Hostedby(department, program)
+	department -> Department.abbreviation
+	program -> Program.abbreviation
+
+Course(Code, credits, department)
+	department -> Department.code
+
+MandatoryProgram(program,course)
+	program -> Program.abbreivation
+	course -> Course.code
+
+MandatoryBranch(branch, course)
+	branch->Branch.abbreviation
+	course -> Course.code
+
+RecommendedBranch(branch, course)
+	branch->Branch.abbreviation
+	course -> Course.code
+
+Classified(course, type)
+	course -> Course.code
+	type -> Classification.type
+
+Classification(type)
+
+RegisteredLimited(sutdent, course, position)
+	student -> Student.idnr
+	course -> Course.code
+
+Limitedcourse(course, capacity)
+	course -> Course.code
+
+Taken(sutdent, course, grade)
+
+Registered(sutdent, course)
+
+Prerequisited(course, prerequisite)
