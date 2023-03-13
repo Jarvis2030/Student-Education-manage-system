@@ -18,14 +18,11 @@ R221(idnr, coursecode, grade, position) -BCNF
 R222(idnr, coursecode, classification) - BCNF
  
 Adding MVD:
-program ->> department
-branchname ->> program
 coursecode ->> classification
 
-R1(program, branchname) - 4NF
-R2(idnr, name, program, login) - 4NF
+R1(idnr, name. program. branchname. login) - 4NF
 
-R1(coursecode, coursename. credit. capacity. department) - 4NF
+R21(coursecode, coursename. credit. capacity. department) - 4NF
 
 R1(idnr, coursecode, grade, position) - 4NF
 
